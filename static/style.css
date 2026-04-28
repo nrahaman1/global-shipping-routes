@@ -1,0 +1,225 @@
+:root {
+  --bg: #0f172a;
+  --panel: #162033;
+  --panel-2: #111a2d;
+  --border: #2b3a55;
+  --text: #e5ecf5;
+  --muted: #94a3b8;
+  --muted-2: #64748b;
+  --accent: #38bdf8;
+  --accent-strong: #0284c7;
+  --origin: #38bdf8;
+  --destination: #f59e0b;
+  --route: #f59e0b;
+  --danger: #f87171;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#sidebar {
+  width: 330px;
+  min-width: 330px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 22px 22px 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+#sidebar header { margin-bottom: 22px; }
+#sidebar h1 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+#sidebar .tagline {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.block {
+  padding: 14px 0 4px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+.block h2 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.group { margin-bottom: 12px; }
+.group label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted-2);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.group select {
+  width: 100%;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  appearance: none;
+  cursor: pointer;
+}
+.group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.group select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#compute {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 14px;
+  border: none;
+  border-radius: 4px;
+  background: var(--accent-strong);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+#compute:hover:not(:disabled) { background: var(--accent); }
+#compute:disabled {
+  background: #263550;
+  color: var(--muted-2);
+  cursor: not-allowed;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 12px;
+  min-height: 18px;
+  line-height: 1.45;
+  margin-top: 12px;
+}
+.status.err { color: var(--danger); }
+
+.route-summary {
+  margin-top: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+.route-summary .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0;
+  gap: 12px;
+}
+.route-summary .row .lbl {
+  font-size: 10px;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.route-summary .row .val {
+  font-weight: 600;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.route-summary .row .val.mono {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono",
+               monospace;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+#sidebar footer {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+#map { flex: 1; background: #000; }
+#map:focus { outline: none; }
+
+/* Leaflet marker styling */
+.port-marker {
+  border-radius: 50%;
+  border: 1.5px solid #000000;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.port-marker.small {
+  opacity: 0.85;
+}
+.port-marker.selected {
+  border-width: 2.5px;
+  box-shadow: 0 0 10px currentColor;
+}
+.port-marker.origin {
+  background: var(--origin);
+  color: var(--origin);
+}
+.port-marker.destination {
+  background: var(--destination);
+  color: var(--destination);
+}
+.port-marker:hover {
+  transform: scale(1.25);
+  opacity: 1;
+}
+.leaflet-tooltip {
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 4px 7px;
+  box-shadow: none;
+}
+.leaflet-tooltip:before { display: none; }
+.leaflet-control-attribution {
+  background: rgba(11, 18, 32, 0.7) !important;
+  color: var(--muted-2) !important;
+}
+.leaflet-control-attribution a { color: var(--muted) !important; }
+
+/* Leading tip that rides the route while it's being traced. */
+.route-head {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff7e6;
+  border: 2px solid var(--route);
+  box-shadow: 0 0 12px var(--route), 0 0 4px #fff;
+}

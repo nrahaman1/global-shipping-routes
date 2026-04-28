@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python)",
+      "Bash(python scripts/01_preprocess.py)",
+      "Bash(python scripts/02_skeletonize.py)",
+      "Bash(tasklist)",
+      "Bash(taskkill //F //PID 19276)",
+      "Bash(taskkill //F //PID 37160)",
+      "Bash(python -u scripts/02_skeletonize.py)",
+      "Bash(python -u scripts/03_clean_topology.py)",
+      "Bash(python -u scripts/04_attributes_export.py)",
+      "Bash(python -u scripts/06_to_gnn.py)",
+      "Bash(python -c ' *)",
+      "Bash(python -u scripts/02_ridge_extract.py)",
+      "Bash(python -u scripts/03_vectorize_edges.py)",
+      "Bash(taskkill //F //PID 48372)",
+      "Bash(python -u scripts/02_ridge_extract.py --sigmas 1.5 2.5 --threshold-pct 90 --close-radius 0 --min-size 200)",
+      "Bash(python -u scripts/02_ridge_extract.py --sigmas 1.5 2.5 --threshold-pct 80 --close-radius 0 --min-size 100)",
+      "Bash(python -u scripts/03_vectorize_edges.py --min-component-km 200)",
+      "Bash(rm -rf outputs scripts/02_ridge_extract.py scripts/03_vectorize_edges.py work/ridges.tif)",
+      "Bash(mkdir -p outputs)",
+      "Bash(python -u scripts/02_route_to_us.py)",
+      "Bash(python -c \"import matplotlib, imageio, PIL; print\\('mpl', matplotlib.__version__, 'imageio', imageio.__version__, 'pillow', PIL.__version__\\)\")",
+      "Bash(python -u scripts/03_visualize.py)",
+      "Bash(taskkill //F //PID 44420)",
+      "Bash(tasklist //FI \"IMAGENAME eq python.exe\")",
+      "Bash(break)",
+      "Bash(tasklist //FI \"PID eq 48892\")",
+      "Bash(taskkill //F //PID 48892)",
+      "Bash(python -u scripts/03_visualize.py --skip-maps)",
+      "Bash(tasklist //FI \"PID eq 51368\")",
+      "Bash(python -u scripts/03_visualize.py --bbox -80,10,30,55 --n-frames 50 --fps 10)",
+      "Bash(python -u scripts/02_route_to_us.py --topk 5)",
+      "Bash(python -u app.py)",
+      "Bash(curl -s http://127.0.0.1:5000/api/countries)",
+      "Bash(curl -s \"http://127.0.0.1:5000/api/ports?country=BD\")",
+      "Bash(python app.py)"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Global Shipping Route Finder</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<aside id="sidebar">
+  <header>
+    <h1>Global Shipping Route Finder</h1>
+    <p class="tagline">Least-cost maritime routes computed over the
+      World&nbsp;Bank / IMF global ship-density raster.</p>
+  </header>
+
+  <section class="block">
+    <h2>Origin</h2>
+    <div class="group">
+      <label for="origin-country">Country</label>
+      <select id="origin-country"><option value="">—</option></select>
+    </div>
+    <div class="group">
+      <label for="origin-port">Port</label>
+      <select id="origin-port" disabled><option value="">—</option></select>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Destination</h2>
+    <div class="group">
+      <label for="dest-country">Country</label>
+      <select id="dest-country"><option value="">—</option></select>
+    </div>
+    <div class="group">
+      <label for="dest-port">Port</label>
+      <select id="dest-port" disabled><option value="">—</option></select>
+    </div>
+  </section>
+
+  <button id="compute" disabled>Compute route</button>
+  <div id="status" class="status"></div>
+  <div id="result"></div>
+
+  <footer>
+    <p>Data: World Port Index (NGA) &amp; Global Shipping Traffic Density
+      (World&nbsp;Bank / IMF, 2015).</p>
+  </footer>
+</aside>
+<main id="map"></main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

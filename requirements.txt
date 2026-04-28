@@ -1,0 +1,9 @@
+flask>=3.0
+numpy
+rasterio
+geopandas
+shapely
+scikit-image
+pillow
+pyogrio
+matplotlib

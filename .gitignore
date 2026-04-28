@@ -1,0 +1,19 @@
+# Large / generated data
+work/
+shipdensity_global/
+outputs/*.gpkg
+outputs/*.gif
+outputs/*.png
+static/density_overlay.png
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
