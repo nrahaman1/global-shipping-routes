@@ -7,3 +7,5 @@ scikit-image
 pillow
 pyogrio
 matplotlib
+huggingface_hub
+gunicorn

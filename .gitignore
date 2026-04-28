@@ -1,10 +1,14 @@
-# Large / generated data
+# Large / generated data (hosted on the HF dataset, not in git)
 work/
 shipdensity_global/
 outputs/*.gpkg
 outputs/*.gif
 outputs/*.png
 static/density_overlay.png
+world_port_index_25th.gpkg
+
+# HF Space working clone (kept side-by-side, not part of the GitHub repo)
+hf-space/
 
 # Python
 __pycache__/

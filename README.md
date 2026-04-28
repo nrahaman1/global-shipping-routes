@@ -12,9 +12,14 @@ great-circles.
 
 ```bash
 pip install -r requirements.txt
+# Pull the density raster + WPI ports from the HF dataset mirror:
+HF_DATASET_REPO=nafizrahaman/global-shipping-data python scripts/download_data.py
 python app.py
 # open http://127.0.0.1:5000
 ```
+
+A live demo runs on Hugging Face Spaces:
+<https://huggingface.co/spaces/nafizrahaman/global-shipping-routes>
 
 On first load the app reads the 2-km density raster (~600 MB in memory), snaps
 every WPI port to its nearest non-zero density pixel, and pre-renders a PNG

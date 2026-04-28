@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.idea/
+.vscode/
+work/
+shipdensity_global/
+outputs/
+world_port_index_25th.gpkg
+static/density_overlay.png
+hf-space/
