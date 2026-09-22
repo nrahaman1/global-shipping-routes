@@ -26,15 +26,16 @@
     zoomControl: true,
   });
 
-  L.tileLayer(
-    "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-    {
-      maxZoom: 10,
-      subdomains: "abcd",
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    }
-  ).addTo(map);
+  // Esri Dark Gray Canvas: keyless, no watermark (CARTO stamps
+  // "API KEY REQUIRED" on non-whitelisted hosts like hf.space).
+  const esri = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+  L.tileLayer(esri + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom: 16,
+    attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors",
+  }).addTo(map);
+  L.tileLayer(esri + "World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom: 16,
+  }).addTo(map);
 
   // Layer groups: unselected country-level ports (small dots) vs.
   // the selected origin / destination (highlighted).
